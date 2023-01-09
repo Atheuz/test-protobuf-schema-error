@@ -1,0 +1,147 @@
+schemas:
+  breaking:
+    use:
+      # Compatibility layer. Note that WIRE_JSON applies a set of rules already
+      - WIRE_JSON
+      # Disallow deleting (or moving) enums, messages, services from a FILE
+      # - ENUM_NO_DELETE
+      # - MESSAGE_NO_DELETE
+      # - SERVICE_NO_DELETE
+      # This allows moving messages, etc within the same PACKAGE
+      - PACKAGE_ENUM_NO_DELETE
+      - PACKAGE_MESSAGE_NO_DELETE
+      - PACKAGE_SERVICE_NO_DELETE
+      # Deletion management. Field deletion allowed, since we check for RESERVED
+      - FILE_NO_DELETE
+      - FILE_SAME_PACKAGE
+      - PACKAGE_NO_DELETE
+      - ENUM_VALUE_NO_DELETE
+      # - FIELD_NO_DELETE
+      - ENUM_VALUE_NO_DELETE_UNLESS_NUMBER_RESERVED
+      - FIELD_NO_DELETE_UNLESS_NUMBER_RESERVED
+      - ENUM_VALUE_NO_DELETE_UNLESS_NAME_RESERVED
+      - FIELD_NO_DELETE_UNLESS_NAME_RESERVED
+      # - ONEOF_NO_DELETE
+      # ensure no protocol switching
+      - FILE_SAME_SYNTAX
+
+      #### Same name checking
+      - ENUM_VALUE_SAME_NAME
+      - FIELD_SAME_TYPE
+      # FIELD_WIRE_COMPATIBLE_TYPE
+      # FIELD_WIRE_JSON_COMPATIBLE_TYPE
+      # This manages changing back and forth between optional/non-optional It's included in WIRE_JSON.
+      - FIELD_SAME_LABEL
+      # This manages if fields can move in/out of a oneof field. It's included in WIRE_JSON.
+      - FIELD_SAME_ONEOF
+      # This checks that the field name for a given field number does not change. Included in WIRE_JSON
+      - FIELD_SAME_NAME
+      # This checks that the json_name field option does not change, which would break JSON compatibility
+      - FIELD_SAME_JSON_NAME
+
+      ##### FILE, PACKAGE configurations - these mostly only affect code bindings, so code wouldn't even compile anyways. Safe to disable
+      - FILE_SAME_CC_ENABLE_ARENAS
+      - FILE_SAME_CC_GENERIC_SERVICES
+      # - FILE_SAME_CSHARP_NAMESPACE
+      # - FILE_SAME_GO_PACKAGE
+      # - FILE_SAME_JAVA_GENERIC_SERVICES
+      # - FILE_SAME_JAVA_MULTIPLE_FILES
+      # - FILE_SAME_JAVA_OUTER_CLASSNAME
+      # - FILE_SAME_JAVA_PACKAGE
+      # - FILE_SAME_JAVA_STRING_CHECK_UTF8
+      # - FILE_SAME_OBJC_CLASS_PREFIX
+      - FILE_SAME_OPTIMIZE_FOR
+      # - FILE_SAME_PHP_CLASS_PREFIX
+      # - FILE_SAME_PHP_GENERIC_SERVICES
+      # - FILE_SAME_PHP_METADATA_NAMESPACE
+      # - FILE_SAME_PHP_NAMESPACE
+      # - FILE_SAME_PY_GENERIC_SERVICES
+      # - FILE_SAME_RUBY_PACKAGE
+      # - FILE_SAME_SWIFT_PREFIX
+
+      # Other options
+      - RESERVED_ENUM_NO_DELETE
+      - RESERVED_MESSAGE_NO_DELETE
+      - EXTENSION_MESSAGE_NO_DELETE
+      - MESSAGE_SAME_MESSAGE_SET_WIRE_FORMAT
+      - MESSAGE_NO_REMOVE_STANDARD_DESCRIPTOR_ACCESSOR
+      - RPC_SAME_REQUEST_TYPE
+      - RPC_SAME_RESPONSE_TYPE
+      - RPC_SAME_CLIENT_STREAMING
+      - RPC_SAME_SERVER_STREAMING
+      - RPC_SAME_IDEMPOTENCY_LEVEL
+      - RPC_NO_DELETE
+
+topics:
+  breaking:
+    use:
+      # Compatibility layer. Note that WIRE_JSON applies a set of rules already
+      - WIRE_JSON
+      # Disallow deleting (or moving) enums, messages, services from a FILE
+      # - ENUM_NO_DELETE
+      # - MESSAGE_NO_DELETE
+      # - SERVICE_NO_DELETE
+      # This allows moving messages, etc within the same PACKAGE
+      - PACKAGE_ENUM_NO_DELETE
+      # - PACKAGE_MESSAGE_NO_DELETE
+      - PACKAGE_SERVICE_NO_DELETE
+      # Deletion management. File deletion allowed for topics' schemas only. Field deletion allowed, since we check for RESERVED
+      # - FILE_NO_DELETE
+      - FILE_SAME_PACKAGE
+      - PACKAGE_NO_DELETE
+      - ENUM_VALUE_NO_DELETE
+      # - FIELD_NO_DELETE
+      - ENUM_VALUE_NO_DELETE_UNLESS_NUMBER_RESERVED
+      - FIELD_NO_DELETE_UNLESS_NUMBER_RESERVED
+      - ENUM_VALUE_NO_DELETE_UNLESS_NAME_RESERVED
+      - FIELD_NO_DELETE_UNLESS_NAME_RESERVED
+      # - ONEOF_NO_DELETE
+      # ensure no protocol switching
+      - FILE_SAME_SYNTAX
+
+      #### Same name checking
+      - ENUM_VALUE_SAME_NAME
+      - FIELD_SAME_TYPE
+      # FIELD_WIRE_COMPATIBLE_TYPE
+      # FIELD_WIRE_JSON_COMPATIBLE_TYPE
+      # This manages changing back and forth between optional/non-optional It's included in WIRE_JSON.
+      - FIELD_SAME_LABEL
+      # This manages if fields can move in/out of a oneof field. It's included in WIRE_JSON.
+      - FIELD_SAME_ONEOF
+      # This checks that the field name for a given field number does not change. Included in WIRE_JSON
+      - FIELD_SAME_NAME
+      # This checks that the json_name field option does not change, which would break JSON compatibility
+      - FIELD_SAME_JSON_NAME
+
+      ##### FILE, PACKAGE configurations - these mostly only affect code bindings, so code wouldn't even compile anyways. Safe to disable
+      - FILE_SAME_CC_ENABLE_ARENAS
+      - FILE_SAME_CC_GENERIC_SERVICES
+      # - FILE_SAME_CSHARP_NAMESPACE
+      # - FILE_SAME_GO_PACKAGE
+      # - FILE_SAME_JAVA_GENERIC_SERVICES
+      # - FILE_SAME_JAVA_MULTIPLE_FILES
+      # - FILE_SAME_JAVA_OUTER_CLASSNAME
+      # - FILE_SAME_JAVA_PACKAGE
+      # - FILE_SAME_JAVA_STRING_CHECK_UTF8
+      # - FILE_SAME_OBJC_CLASS_PREFIX
+      - FILE_SAME_OPTIMIZE_FOR
+      # - FILE_SAME_PHP_CLASS_PREFIX
+      # - FILE_SAME_PHP_GENERIC_SERVICES
+      # - FILE_SAME_PHP_METADATA_NAMESPACE
+      # - FILE_SAME_PHP_NAMESPACE
+      # - FILE_SAME_PY_GENERIC_SERVICES
+      # - FILE_SAME_RUBY_PACKAGE
+      # - FILE_SAME_SWIFT_PREFIX
+
+      # Other options
+      - RESERVED_ENUM_NO_DELETE
+      - RESERVED_MESSAGE_NO_DELETE
+      - EXTENSION_MESSAGE_NO_DELETE
+      - MESSAGE_SAME_MESSAGE_SET_WIRE_FORMAT
+      - MESSAGE_NO_REMOVE_STANDARD_DESCRIPTOR_ACCESSOR
+      - RPC_SAME_REQUEST_TYPE
+      - RPC_SAME_RESPONSE_TYPE
+      - RPC_SAME_CLIENT_STREAMING
+      - RPC_SAME_SERVER_STREAMING
+      - RPC_SAME_IDEMPOTENCY_LEVEL
+      - RPC_NO_DELETE

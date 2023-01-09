@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package common;
+
+import "google/protobuf/descriptor.proto";
+import "common/options.proto";
+
+option (csharp_options_as_attributes) = true;
+
+enum TermSource {
+    TERM_SOURCE_UNSPECIFIED = 0;
+}
