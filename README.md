@@ -5,7 +5,7 @@
 4. Run pytest: `pytest`
 5. See that when `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=upb`, `pytest` fails to run.
 6. Change `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=upb` to `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python` in `pytest.ini`.
-7. Run pytest `pytest`
+7. Run pytest: `pytest`
 8. See that when `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python`, `pytest` runs without issue.
 
 Similarly, if you downgrade to `protobuf==3.20.3` and run the test using `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=cpp` or `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python`, it also succeeds: Only `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=upb` which became available in 4.x fails.
@@ -14,7 +14,7 @@ Similarly, if you downgrade to `protobuf==3.20.3` and run the test using `PROTOC
 What's happening is that we are going into `common/terms_pb2.py` and manually replacing `from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2` with `from google_test.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2`.
 Note that we are not doing this replacement in `common/options_pb2.py`, having this conflict of 2 different imports is necessary for the error to appear: i.e. if we do the replacement in `common/options_pb2.py`, then the error disappears and everything works fine, but this is not what we're doing on our end, in that we only do the replacement in one file and not all files.
 
-The `descriptor_pb2.py` file was generated using `buf` version 1.11.0 and `protoc` version 3.20.3 using the following commands:
+The `descriptor_pb2.py` file was generated using `buf` version 1.11.0 and `protoc` version 3.21.12 using the following commands:
 
 ```
 cd build
